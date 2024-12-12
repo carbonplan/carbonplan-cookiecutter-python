@@ -1,0 +1,11 @@
+name: {% raw %}{{ cookiecutter.project_slug }}{% endraw %}
+
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - python={% raw %}{{ cookiecutter.python_version }}{% endraw %}
+  - pip
+  - uv
+  - pip:
+    - -e .
