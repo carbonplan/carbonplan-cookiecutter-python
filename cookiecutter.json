@@ -4,6 +4,5 @@
     "project_slug": "{{ cookiecutter.project_name.lower().replace(' ', '_').replace('-', '_') }}",
     "author_name": "carbonplan",
     "email": "hello@carbonplan.org",
-    "version": "0.0.1",
     "python_version": "3.12"
 }

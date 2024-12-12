@@ -7,5 +7,5 @@ dependencies:
   - python={{ cookiecutter.python_version }}
   - pip
   - uv
-  - pip:
-    - -e .
+  # - pip:
+  
