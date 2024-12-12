@@ -23,7 +23,7 @@ A CarbonPlan cookiecutter template for a starting a Python project.
 
 run:
 
-`cookiecutterhttps://github.com/carbonplan/carbonplan-python-cookiecutter.git`
+`cookiecutter https://github.com/carbonplan/carbonplan-python-cookiecutter.git`
 
 This should run a cli that walks you through the template creation.
 
