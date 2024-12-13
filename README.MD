@@ -18,17 +18,21 @@ A CarbonPlan cookiecutter template for a starting a Python project.
 
 ## Usage
 
-### Create your project template
+In a virtual environment install cookiecutter:
+
 `pip install cookiecutter`
 
-run:
+### Template your project
+
+After installing cookiecutter run:
 
 `cookiecutter https://github.com/carbonplan/carbonplan-cookiecutter-python`
 
-This should run a cli that walks you through the template creation.
+This should run a CLI that walks you through project templating.
 
 
 ### Setup your project
+
 Todo: add instructions to:
 - push your new project to github:
 - enable github settings (for CI, pre-commit gh action etc)
