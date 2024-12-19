@@ -1,6 +1,18 @@
 name: Main
 
-on: [push, pull_request]
+on: [workflow_dispatch, push, pull_request]
+
+# Needed by Aws configure credentials
+permissions:
+  id-token: write
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  AWS_DEFAULT_REGION: us-west-2
 
 jobs:
   test:
@@ -10,7 +22,14 @@ jobs:
         python-version: ["{% raw %}{{ cookiecutter.python_version }}{% endraw %}"]
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
+    - name: configure aws credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        role-to-assume: arn:aws:iam::631969445205:role/github-action-role
+        role-session-name: data-ops-utilities-role-session
+        aws-region: ${{ env.AWS_DEFAULT_REGION }}
+        
     - name: Set up Python {% raw %}{{ cookiecutter.python_version }}{% endraw %}
       uses: actions/setup-python@v3
       with:
