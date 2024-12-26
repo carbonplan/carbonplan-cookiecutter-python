@@ -7,9 +7,11 @@ permissions:
   id-token: write
   contents: read
 
+# {% raw %}
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
+# {% endraw %}
 
 env:
   AWS_DEFAULT_REGION: us-west-2
@@ -28,8 +30,10 @@ jobs:
       with:
         role-to-assume: arn:aws:iam::631969445205:role/github-action-role
         role-session-name: data-ops-utilities-role-session
+        # {% raw %}
         aws-region: ${{ env.AWS_DEFAULT_REGION }}
-        
+        # {% endraw %}
+
     - name: Set up Python {{ cookiecutter.python_version }}
       uses: actions/setup-python@v3
       with:
