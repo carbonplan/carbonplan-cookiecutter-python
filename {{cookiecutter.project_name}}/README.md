@@ -1,4 +1,4 @@
-# {% raw %}{{ cookiecutter.project_name }}{% endraw %}
+# {{ cookiecutter.project_name }}
 
 <p align="left" >
 <a href='https://carbonplan.org'>
