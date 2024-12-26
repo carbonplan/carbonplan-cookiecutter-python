@@ -2,7 +2,7 @@
 [project]
 name = "{{ cookiecutter.project_slug }}"
 description = "{{ cookiecutter.description }}"
-authors = [{name = "CarbonPlan", email = "hello@carbonplan.org"}]
+authors = [{name = "{{ cookiecutter.author_name }}", email = "{{ cookiecutter.email }}"}]
 readme = "README.md"
 requires-python = ">={{ cookiecutter.python_version }}"
 
