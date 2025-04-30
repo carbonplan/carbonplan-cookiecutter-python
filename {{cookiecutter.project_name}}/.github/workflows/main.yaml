@@ -1,6 +1,6 @@
 name: Main
 
-on: [workflow_dispatch, push, pull_request]
+on: pull_request
 
 # Needed by Aws configure credentials
 permissions:
@@ -34,18 +34,16 @@ jobs:
         aws-region: ${{ env.AWS_DEFAULT_REGION }}
         # {% endraw %}
 
-    - name: Set up Python {{ cookiecutter.python_version }}
-      uses: actions/setup-python@v3
+
+    - uses: prefix-dev/setup-pixi@v0.8.1
       with:
-        python-version: {{ cookiecutter.python_version }}
+        pixi-version: v0.39.2
+        environments: {{ cookiecutter.python_version }}
 
-    - name: Install dependencies
+    - name: Install package
       run: |
+          python -m pip install -e . --no-deps
 
-        python -m pip install --upgrade pip
-        pip install -e .[dev]
-        pip install pytest
-
-    - name: Run tests
+    - name: List installed packages
       run: |
-        pytest
+        pixi list

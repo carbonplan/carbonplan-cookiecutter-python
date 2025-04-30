@@ -7,16 +7,14 @@ readme = "README.md"
 requires-python = ">={{ cookiecutter.python_version }}"
 
 license = {text = "MIT"}
+dynamic = ["version"]
 
 dependencies = [
     # Add your project dependencies here
-    # ex: xarray
-]
-dynamic = ["version"]
+    "numpy"
+    # "xarray @ git+https://github.com/pydata/xarray" # install from source,
 
-[build-system]
-requires = ["setuptools>=61.0", "wheel"]
-build-backend = "setuptools.build_meta"
+]
 
 
 [project.optional-dependencies]
@@ -26,6 +24,30 @@ test = [
     "pre-commit",
     "mypy"
 ]
+
+
+
+[tool.pixi.environments]
+test = { features = ["test"], solve-group = "default" }
+
+
+
+[tool.pixi.project]
+channels = ["conda-forge"]
+platforms = ["linux-64", "osx-64", "osx-arm64"]
+
+[tool.pixi.pypi-dependencies]
+"{{ cookiecutter.project_slug }}" = { path = ".", editable = true }
+
+[build-system]
+requires = [
+    "setuptools>=61.0.0",
+    "wheel",
+    "setuptools_scm[toml]>=7.0",
+    "check-manifest"]
+
+[tool.pixi.tasks]
+
 
 [tool.setuptools_scm]
 fallback_version = "9999"
